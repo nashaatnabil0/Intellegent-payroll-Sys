@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Payrolls - IPS</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-firestore.js"></script>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0"><a
+                    class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
+                    href="#"><img src="assets/img/avatars/Ips logo.png" width="130" height="65"></a>
+                <ul class="navbar-nav text-light" id="accordionSidebar-1">
+                    <li class="nav-item"><a class="nav-link active" href="index.html"><i
+                                class="fas fa-tachometer-alt"></i><span>Payrolls</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html"><i
+                                class="fas fa-user"></i><span>Profile</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="table.html"><i class="fas fa-table"></i>Calendar</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="register.html"><i
+                                class="fas fa-user-circle"></i><span>Add Employee</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="attend-report.html"><i
+                                class="fas fa-user-circle"></i><span>Attend Report</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
+                        id="sidebarToggle-1" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3"
+                            id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        </form>
+                        <li class="nav-item dropdown no-arrow">
+                            <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
+                                    aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
+                                        class="d-none d-lg-inline me-2 text-gray-600 small">Admin</span><img
+                                        class="border rounded-circle img-profile"
+                                        src="assets/img/avatars/avatar3.jpeg"></a>
+                                <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
+                                        class="dropdown-item" href="#"><i
+                                            class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a
+                                        class="dropdown-item" href="profile.html">
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"
+                                            onclick="logout();"><i
+                                                class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+                                </div>
+                            </div>
+                        </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4">Team</h3>
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">Employee Info</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                aria-describedby="dataTable_info">
+                                <table class="table table-dark" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>User ID</th>
+                                            <th>Salary per day</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody1"></tbody>
+                                </table>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-auto"><input class="form-control form-control-user" type="text"
+                                        id="employeeid" placeholder="Employee ID" name="employeeid" required="">
+                                </div>
+                                <div class="col-auto"><input class="form-control form-control-user" type="text"
+                                        id="amount" placeholder="Transaction Amount" name="transaction amount"
+                                        required="">
+                                </div>
+                                <div class="col-auto"><button class="btn btn-primary d-block btn-user w-100"
+                                        type="submit" id="updatebtb">Bonus</button></div>
+                                <div class="col-auto"><button class="btn btn-primary d-block btn-user w-100"
+                                        type="submit" id="updatebts">Substrat</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>IPS 2022</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script type="module">
+        var stdNo = 0;
+        var tbody = document.getElementById('tbody1');
+        function AddItemToTable(name, position, userid, salarypd, Salary) {
+            let trow = document.createElement("tr");
+            let td1 = document.createElement('td');
+            let td2 = document.createElement('td');
+            let td3 = document.createElement('td');
+            let td4 = document.createElement('td');
+            let td5 = document.createElement('td');
+            let td6 = document.createElement('td');
+
+            td1.innerHTML = ++stdNo;
+            td2.innerHTML = name;
+            td3.innerHTML = position;
+            td4.innerHTML = userid;
+            td5.innerHTML = salarypd;
+            td6.innerHTML = Salary;
+
+            trow.appendChild(td1);
+            trow.appendChild(td2);
+            trow.appendChild(td3);
+            trow.appendChild(td4);
+            trow.appendChild(td5);
+            trow.appendChild(td6);
+
+            tbody.appendChild(trow);
+        }
+        function AddAllItemsToTable(users1) {
+            stdNo = 0;
+            tbody.innerHTML = "";
+            users1.forEach(element => {
+                var salary = element.works_day * element.SalaryPD;
+                var employeeid = element.EmpID;
+
+                getdata(employeeid, salary).then(result => {
+                    var lastsalary = result;
+                    console.log(lastsalary);
+                    AddItemToTable(element.FName + " " + element.LName, element.Position, element.EmpID,
+                        element.SalaryPD, lastsalary);
+                });
+
+            });
+        }
+
+        async function GetAllDataOnce() {
+            const querySnapshot = await getDocs(collection(db, "users"));
+            var users1 = [];
+            querySnapshot.forEach(doc => {
+                users1.push(doc.data());
+            });
+            AddAllItemsToTable(users1);
+        }
+        window.onload = GetAllDataOnce;
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+
+        var firebaseConfig = {
+            apiKey: "AIzaSyAj-vBEE2m09UetjHhe66-vX1nYJs1KA3I",
+            authDomain: "intelligent-payroll-system.firebaseapp.com",
+            projectId: "intelligent-payroll-system",
+            storageBucket: "intelligent-payroll-system.appspot.com",
+            messagingSenderId: "1074313122356",
+            appId: "1:1074313122356:web:9dbf60a696fe59095af061",
+            measurementId: "G-WJLVW9YEDX"
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        import { getFirestore, doc, getDoc, getDocs, query, where, onSnapshot, collection }
+            from "https://www.gstatic.com/firebasejs/9.8.1/firebase-firestore.js";
+        const db = getFirestore(app);
+        //==============================================================================//
+        const db1 = firebase.firestore();
+        window.addEventListener('DOMContentLoaded', function () {
+            document.getElementById("updatebtb").addEventListener("click", () => {
+                console.log('clicked');
+                var employeeid = document.getElementById("employeeid").value;
+                var amount = document.getElementById("amount").value;
+                var search = db1.collection("users").where("EmpID", "==", employeeid);
+                search.get()
+                    .then((querySnapshot) => {
+                        if (!querySnapshot.empty) {
+                            bouns(employeeid, parseInt(amount));
+                            console.log("done");
+                        } else {
+                            console.log("3aaa");
+                        }
+                    });
+            });
+        });
+        window.addEventListener('DOMContentLoaded', function () {
+            document.getElementById("updatebts").addEventListener("click", () => {
+                console.log('clicked');
+                var employeeid = document.getElementById("employeeid").value;
+                var amount = document.getElementById("amount").value;
+                var search = db1.collection("users").where("EmpID", "==", employeeid);
+                search.get()
+                    .then((querySnapshot) => {
+                        if (!querySnapshot.empty) {
+                            substract(employeeid, parseInt(amount));
+                            console.log("done");
+                        } else {
+                            console.log("3aaa");
+                        }
+                    });
+            });
+        });
+        function bouns(employeeid, amount) {
+            var currentdate = new Date();
+            var datetime = "Last Sync: " + currentdate.getDate() + "/"
+                + (currentdate.getMonth() + 1) + "/"
+                + currentdate.getFullYear();
+            db1.collection('salary').add({
+                user_id: employeeid,
+                type: "bonus",
+                amount: amount,
+                date: datetime
+            });
+            window.onload = GetAllDataOnce;
+            return amount;
+        }
+        function substract(employeeid, amount) {
+            var currentdate = new Date();
+            var datetime = "Last Sync: " + currentdate.getDate() + "/"
+                + (currentdate.getMonth() + 1) + "/"
+                + currentdate.getFullYear();
+            db1.collection('salary').add({
+                user_id: employeeid,
+                type: "substract",
+                amount: amount,
+                date: datetime
+            });
+            window.onload = GetAllDataOnce;
+            return -amount;
+        }
+        async function getdata(employeeid, salary) {
+            const querySnapshot1 = await getDocs(collection(db, "salary"));
+            var salary1 = [];
+            querySnapshot1.forEach(doc => {
+                salary1.push(doc.data());
+            });
+            return Promise.resolve(sum(salary1, employeeid, salary));
+        }
+        function sum(salary1, employeeid, salary) {
+            var s = salary;
+            salary1.forEach(element => {
+                if (element.user_id == employeeid) {
+                    if (element.type == "bonus") {
+                        s = s + element.amount;
+                    } else if (element.type == "substract") {
+                        s = s - element.amount;
+                    }
+                } else {
+                    s = s;
+                }
+            });
+            return Promise.resolve(s);
+        }
+
+    </script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAj-vBEE2m09UetjHhe66-vX1nYJs1KA3I",
+            authDomain: "intelligent-payroll-system.firebaseapp.com",
+            projectId: "intelligent-payroll-system",
+            storageBucket: "intelligent-payroll-system.appspot.com",
+            messagingSenderId: "1074313122356",
+            appId: "1:1074313122356:web:9dbf60a696fe59095af061",
+            measurementId: "G-WJLVW9YEDX"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        //firebase.analytics();
+
+    </script>
+    <script src="check.js"></script>
+</body>
+
+</html>

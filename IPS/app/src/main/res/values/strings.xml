@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">IPS</string>
+    <string name="login">Login</string>
+    <string name="home_page">Home Page</string>
+    <string name="home">Home</string>
+    <string name="reminder">Calender</string>
+    <string name="my_profile">Profile</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="start_work">Start Work</string>
+    <string name="you_are">You are</string>
+    <string name="offline">offline</string>
+    <string name="position">Position:</string>
+    <string name="salary">Salary:</string>
+    <string name="name">Name:</string>
+    <string name="email">Email:</string>
+    <string name="id">ID:</string>
+    <string name="salary_report">Salary Report</string>
+    <string name="attendence_report">Add Request</string>
+    <string name="phone_number">Phone Number:</string>
+    <string name="todo">TODO</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="start_sending_location">Send Location</string>
+</resources>

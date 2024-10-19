@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Add Employee - IPS</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-firestore.js"></script>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0"><a
+                    class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
+                    href="#"><img src="assets/img/avatars/Ips logo.png" width="130" height="65"></a>
+                <ul class="navbar-nav text-light" id="accordionSidebar-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i
+                                class="fas fa-tachometer-alt"></i><span>Payrolls</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html"><i
+                                class="fas fa-user"></i><span>Profile</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="table.html"><i class="fas fa-table"></i>Calendar</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link active" href="register.html"><i
+                                class="fas fa-user-circle"></i><span>Add Employee</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="attend-report.html"><i
+                                class="fas fa-user-circle"></i><span>Attend Report</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
+                        id="sidebarToggle-1" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3"
+                            id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        </form>
+                        <li class="nav-item dropdown no-arrow">
+                            <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
+                                    aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
+                                        class="d-none d-lg-inline me-2 text-gray-600 small">Admin</span><img
+                                        class="border rounded-circle img-profile"
+                                        src="assets/img/avatars/avatar3.jpeg"></a>
+                                <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
+                                        class="dropdown-item" href="#"><i
+                                            class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a
+                                        class="dropdown-item" href="profile.html">
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"
+                                            onclick="logout();"><i
+                                                class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+                                </div>
+                            </div>
+                        </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="col-lg-9 col-xl-8 offset-lg-3 offset-xl-2" id="register-form" style="margin-left: 0px;">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h4 class="text-dark mb-4">Create Employee Account!</h4>
+                        </div>
+                        <form class="user">
+                            <div class="row mb-3">
+                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user"
+                                        type="text" id="fname" placeholder="First Name" name="first_name" required="">
+                                </div>
+                                <div class="col-sm-6"><input class="form-control form-control-user" type="text"
+                                        id="lname" placeholder="Last Name" name="last_name" required=""></div>
+                            </div>
+                            <div class="mb-3"><input class="form-control form-control-user" type="text" id="address"
+                                    aria-describedby="emailHelp" placeholder="Address" name="address"
+                                    style="margin: 0px;margin-top: -5px;margin-bottom: 11px;padding: 16px;"
+                                    required=""><input class="form-control form-control-user" type="email" id="email"
+                                    aria-describedby="emailHelp" placeholder="Email Address" name="email"
+                                    required=""><input class="form-control form-control-user" type="phone" id="phone"
+                                    aria-describedby="emailHelp" placeholder="Phone" name="phone"
+                                    style="margin: 0px;margin-top: 10px;margin-bottom: 11px;padding: 16px;" required=""
+                                    minlength="11" maxlength="11"></div>
+                            <div class="row mb-3">
+                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user"
+                                        type="text" id="position" placeholder="position" name="position" required=""
+                                        style="margin-top: -5px;"></div>
+                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user"
+                                        type="number" id="salary" placeholder="Salary per day" name="Salary" required=""
+                                        style="margin-top: -4px;"></div>
+                                <div class="col"><input class="form-control form-control-user" type="text" id="ssn"
+                                        placeholder="SSN" name="ssn" required="" minlength="14" maxlength="14"
+                                        style="margin-top: 10px;"><input class="form-control form-control-user"
+                                        type="text" id="userid" placeholder="ID" name="id" required="" minlength="14"
+                                        maxlength="14" style="margin-top: 10px;" readonly=""></div>
+                                <div class="col-sm-6 col-lg-6"><label class="form-label text-center"
+                                        style="margin-top: 24px;margin-left: 0px;"><strong>Profile
+                                            Image&nbsp;</strong></label><input class="form-control form-control-user"
+                                        type="file" id="img" placeholder="profile Image" name="img" required=""
+                                        minlength="14" maxlength="14" accept="image/*"
+                                        style="margin-bottom: 0px;margin-top: 10px;"></div>
+                            </div><button class="btn btn-primary d-block btn-user w-100" type="submit"
+                                id="registerbt">Register Account</button>
+                            <hr>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>IPS 2022</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAj-vBEE2m09UetjHhe66-vX1nYJs1KA3I",
+            authDomain: "intelligent-payroll-system.firebaseapp.com",
+            projectId: "intelligent-payroll-system",
+            storageBucket: "intelligent-payroll-system.appspot.com",
+            messagingSenderId: "1074313122356",
+            appId: "1:1074313122356:web:9dbf60a696fe59095af061",
+            measurementId: "G-WJLVW9YEDX"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+    //firebase.analytics();
+
+    </script>
+    <script src="register.js"></script>
+    <script src="check.js"></script>
+</body>
+
+</html>

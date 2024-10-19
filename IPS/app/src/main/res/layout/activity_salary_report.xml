@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+    tools:context=".Salary_Report">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/buMyProfileSalaryReport"
+            android:layout_width="130dp"
+            android:layout_height="63dp"
+            android:background="@drawable/menu_buttons"
+            android:text="@string/my_profile"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/buHomeSalaryReport"
+            android:layout_width="123dp"
+            android:layout_height="63dp"
+            android:background="@drawable/menu_buttons"
+            android:text="@string/home"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/buReminderSalaryReport"
+            android:layout_width="123dp"
+            android:layout_height="63dp"
+            android:background="@drawable/menu_buttons"
+            android:text="@string/reminder"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="411dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/audiowide"
+        android:gravity="center"
+        android:text="Salary report"
+        android:textAllCaps="true"
+        android:textColor="@color/offwhite_project"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="276dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/audiowide"
+        android:gravity="center"
+        android:text="Your Fixed Salary"
+        android:textAllCaps="true"
+        android:textColor="@color/offwhite_project"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="276dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="224dp"
+        android:fontFamily="@font/audiowide"
+        android:gravity="center"
+        android:text="Your Final Salary"
+        android:textAllCaps="true"
+        android:textColor="@color/offwhite_project"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FixedSalaryView" />
+
+    <TextView
+        android:id="@+id/FinalSalaryView"
+        android:layout_width="276dp"
+        android:layout_height="54dp"
+        android:fontFamily="@font/audiowide"
+        android:gravity="center"
+        android:text="xxxxx E.G"
+        android:textAllCaps="true"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+    <TextView
+        android:id="@+id/FixedSalaryView"
+        android:layout_width="276dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/audiowide"
+        android:gravity="center"
+        android:text="xxxxx E.G"
+        android:textAllCaps="true"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

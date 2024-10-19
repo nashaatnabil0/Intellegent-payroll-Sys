@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1074313122356",
+    "project_id": "intelligent-payroll-system",
+    "storage_bucket": "intelligent-payroll-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074313122356:android:06795e21e88061225af061",
+        "android_client_info": {
+          "package_name": "com.example.aps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074313122356-9gvd9pasv5hu0igjmikhbfqmnttjbk4t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYb0BGTT9hWXtiRpXHgpREyNWZMD32Db8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074313122356-9gvd9pasv5hu0igjmikhbfqmnttjbk4t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
